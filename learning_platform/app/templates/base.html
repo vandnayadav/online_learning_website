@@ -1,0 +1,96 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}Courses | Education{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body>
+
+<!-- Preloader -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-circle"></div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="header-area header-transparent">
+        <div class="main-header">
+            <div class="header-bottom header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo">
+                                <a href="{% url 'index' %}">
+                                    <img src="{% static 'assets/img/logo/logo.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="col-xl-10 col-lg-10">
+                            <div class="menu-wrapper d-flex justify-content-end">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="{% url 'index' %}">Home</a></li>
+                                        <li><a href="#">Courses</a></li>
+                                        <li><a href="{% url 'about' %}">About</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer class="footer-bg">
+    <div class="container text-center p-4">
+        <p>© 2026 Online Learning Platform</p>
+    </div>
+</footer>
+
+<!-- JS -->
+<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>
