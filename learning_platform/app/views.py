@@ -16,4 +16,4 @@ def contact(request):
 
 def courses(request):
     courses = Course.objects.all()
-    return render(request, "courses.html", {'courses': courses})
+    return render(request, "course.html", {'course': courses})
