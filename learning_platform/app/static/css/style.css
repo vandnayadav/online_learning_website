@@ -10423,27 +10423,83 @@ h6,
 
 /* CARD */
 /* ================= COURSE CARD ================= */
-/* ================= ROW FIX ================= */
 
 .row {
   overflow: visible !important;
 }
 
 /* ================= CARD ================= */
+/* ================= SECTION HEADER ================= */
 
+.section-badge {
+  display: inline-block;
+  background: rgba(123, 44, 255, 0.1);
+  color: #2878eb;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #14142b;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.section-title span {
+  color: #2878eb;
+}
+
+.section-subtitle {
+  color: #666;
+  font-size: 18px;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 32px;
+  }
+}
+
+/* ================= COURSE SECTION ================= */
+
+.course-section {
+  background: linear-gradient(180deg, #289feb 0%, #ffffff 100%);
+  padding: 60px 0;
+
+  border-radius: 50px 50px 0px 0px;
+}
+
+/* main container box */
+.course-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
 .course-card {
   position: relative;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   transition: 0.4s;
   overflow: visible;
 }
 
 /* bring hovered card above others */
 .course-card:hover {
-  transform: translateY(-10px);
-  z-index: 1000;
+  transform: translateY(-12px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  z-index: 100;
 }
 
 /* ================= IMAGE ================= */
@@ -10456,7 +10512,7 @@ h6,
 }
 
 .course-body {
-  padding: 20px;
+  padding: 22px;
 }
 
 .price {
@@ -10467,13 +10523,18 @@ h6,
 
 .course-btn {
   display: block;
-  margin-top: 10px;
+  margin-top: 15px;
   background: #111;
   color: #fff;
-  padding: 10px;
+  padding: 12px;
   text-align: center;
-  border-radius: 6px;
+  border-radius: 8px;
   text-decoration: none;
+  transition: 0.3s;
+}
+.course-btn:hover {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: #fff;
 }
 
 /* ================= HOVER CARD ================= */
@@ -10481,31 +10542,23 @@ h6,
 .course-hover {
   position: absolute;
   top: 0;
-  left: 110%;
-
+  left: 108%;
   width: 320px;
   background: #fff;
   padding: 25px;
-
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-
+  border-radius: 14px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
   opacity: 0;
   visibility: hidden;
-
   transform: translateX(20px);
-  transition: 0.35s ease;
-
-  z-index: 9999;
+  transition: 0.35s;
 }
 
-/* SHOW HOVER */
 .course-card:hover .course-hover {
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
 }
-
 /* ================= BUTTON ================= */
 
 .add-cart {
@@ -10517,4 +10570,91 @@ h6,
   padding: 12px;
   border-radius: 8px;
   text-decoration: none;
+}
+
+/* ================= TESTIMONIAL ================= */
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 25px;
+  height: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+  border: 1px solid black;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.quote-icon {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.testimonial-card p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background: #222;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 12px;
+}
+
+.testimonial-link {
+  color: #7b2cff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.testimonial-link:hover {
+  text-decoration: underline;
+}
+
+.cart-item {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.cart-summary {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 20px;
+}
+
+.checkout-btn {
+  width: 100%;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 18px;
+  margin-top: 20px;
 }

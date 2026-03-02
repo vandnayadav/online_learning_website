@@ -61,197 +61,78 @@
 
 <!-- ================= HEADER ================= -->
 
-<!-- ================= HEADER ================= -->
-<div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
-        <div class="container text-center py-5">
-            <h1 class="text-white display-1">Course</h1>
-            <div class="d-inline-flex text-white mb-5">
-                <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
-                <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                <p class="m-0 text-uppercase">Course</p>
-            </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
-<!-- ================= COURSES SECTION ================= -->
-<div class="row justify-content-center mb-5">
-<div class="col-lg-8 text-center">
+{% load static %}
 
-<span class="section-badge">
-OUR COURSES
-</span>
+<div class="container py-5">
 
-<h1 class="section-title">
-Checkout New Releases Of <br>
-<span>Our Courses</span>
-</h1>
+<h1 class="mb-5">Shopping Cart</h1>
 
-<p class="section-subtitle">
-Learn industry-ready skills with expert instructors and 
-upgrade your career today.
-</p>
+<div class="row">
 
-</div>
-</div>
+<!-- LEFT SIDE -->
+<div class="col-lg-8">
 
-<section class="course-section">
-
-<div class="container">
-
-<div class="course-box">
-
-<div class="row course-row">
+<h5>{{ courses|length }} Course in Cart</h5>
+<hr>
 
 {% for course in courses %}
 
-<div class="col-lg-4 col-md-6 mb-4">
+<div class="cart-item d-flex mb-4">
 
-<div class="course-card">
+<img src="{{ course.image.url }}" width="120">
 
-<!-- IMAGE -->
-<div class="course-img-wrapper">
-<a href="{% url 'add_to_cart' course.id %}">
-<img src="{{ course.image.url }}" class="course-img">
-</a>
-</div>
-
-<!-- BODY -->
-<div class="course-body">
-
-<h5 class="course-title">{{ course.name }}</h5>
-
-<p class="instructor">
-Instructor: Sabke Sir
-</p>
-
-<div class="rating">
-⭐ 4.8 <span>(202 Reviews)</span>
-</div>
-
-<div class="price">
-₹ {{ course.price }}
-</div>
-
-<a href="{% url 'add_to_cart' course.id %}" class="course-btn">
-View Course Details
-</a>
-
-</div>
-
-<!-- HOVER CARD -->
-<div class="course-hover">
+<div class="ml-3 flex-grow-1">
 
 <h5>{{ course.name }}</h5>
 
-<p>Complete course covering concepts and real projects.</p>
+<p>Instructor</p>
 
-<ul>
-<li>✔ Beginner to Advanced</li>
-<li>✔ Lifetime Access</li>
-<li>✔ Certificate Included</li>
-</ul>
+<span class="badge badge-success">Bestseller</span>
 
-<a href="{% url 'add_to_cart' course.id %}" class="add-cart">
-Add to cart
+</div>
+
+<div class="text-right">
+
+<h5>₹{{ course.price }}</h5>
+
+<a href="{% url 'remove_from_cart' course.id %}" 
+   class="text-danger font-weight-bold">
+   Remove
 </a>
 
 </div>
 
 </div>
-</div>
+
+<hr>
 
 {% endfor %}
 
 </div>
-</div>
-</div>
 
-</section>
-<!-- ================= TESTIMONIAL SECTION ================= -->
 
-<div class="container py-5">
+<!-- RIGHT SIDE -->
+<div class="col-lg-4">
 
-<h2 class="mb-5">
-See what others are achieving through learning
-</h2>
+<div class="cart-summary">
 
-<div class="row">
+<h5>Total:</h5>
 
-<!-- CARD 1 -->
-<div class="col-lg-3 col-md-6 mb-4">
-<div class="testimonial-card">
+<h2>₹{{ total }}</h2>
 
-<div class="quote-icon">“</div>
-
-<p>
-Because of this course I was able to clear my two interviews.
-Thanks for making such wonderful content.
-</p>
-
-<div class="user-info">
-<div class="avatar">DS</div>
-<span>Diksha S</span>
-</div>
-
-<a href="#" class="testimonial-link">
-Hindi →
-</a>
+<button class="checkout-btn">
+Proceed to Checkout →
+</button>
 
 </div>
-</div>
-
-<!-- CARD 2 -->
-<div class="col-lg-3 col-md-6 mb-4">
-<div class="testimonial-card">
-
-<div class="quote-icon">“</div>
-
-<p>
-This has helped me so much in my career. I joined as a frontend
-engineer and transitioned to full stack engineer.
-</p>
-
-<div class="user-info">
-<div class="avatar">CB</div>
-<span>Chethan B</span>
-</div>
-
-<a href="#" class="testimonial-link">
-Chemistry →
-</a>
 
 </div>
-</div>
-
-<!-- CARD 3 -->
-<div class="col-lg-3 col-md-6 mb-4">
-<div class="testimonial-card">
-
-<div class="quote-icon">“</div>
-
-<p>
-Today, I am a software developer, and I credit a significant
-part of my success to this course.
-</p>
-
-<div class="user-info">
-<div class="avatar">BK</div>
-<span>Batchu K</span>
-</div>
-
-<a href="#" class="testimonial-link">
-Hindi Grammar →
-</a>
 
 </div>
-</div>
 
-
-</div>
 </div>
 
 <!-- ================= FOOTER ================= -->
