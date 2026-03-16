@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-txmv7u7a75%nng&p9*#w3kg(d)1381mvcvd^0z(giwc#wpe24^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -125,16 +125,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-EEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'projectclient26@gmail.com'
-EMAIL_HOST_PASSWORD = 'eagy rfwj znzk zrfp'
-
+EMAIL_HOST_PASSWORD = 'eagyrfwjznzkzrfp'
 DEFAULT_FROM_EMAIL = 'projectclient26@gmail.com'
+
+import ssl
+EMAIL_SSL_CONTEXT = ssl._create_unverified_context()
+
+EMAIL_SSL_CERTFILE = None
+EMAIL_SSL_KEYFILE = None
+EMAIL_TIMEOUT = 10
+
+
+
+
 
 YOUTUBE_CHANNEL_ID = "UCON7G9L2CdpJKVJt7DIqTcQ"
 LOGIN_URL = 'app:login'

@@ -15,6 +15,8 @@ from django.utils import timezone
 from django.http import JsonResponse
 from .models import LiveClass, RecordedReplay
 from django.contrib.auth.decorators import login_required
+from django.utils.encoding import force_str
+
 
 
 # ---------- NORMAL PAGES ----------
@@ -147,20 +149,24 @@ def logout_view(request):
 
 # ---------- FORGOT PASSWORD ----------
 def forgot_password(request):
+
     if request.method == "POST":
+
         email = request.POST['email']
         user = User.objects.filter(email=email).first()
 
         if user:
+
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             token = default_token_generator.make_token(user)
 
-            link = f"http://127.0.0.1:8000/reset/{uid}/{token}/"
+            domain = request.get_host()
+            link = f"http://{domain}/reset/{uid}/{token}/"
 
             send_mail(
                 "Password Reset",
                 f"Click this link to reset password: {link}",
-                "admin@example.com",
+                "projectclient26@gmail.com",
                 [email],
             )
 
@@ -174,16 +180,28 @@ def forgot_password(request):
 
 # ---------- RESET PASSWORD ----------
 def reset_password(request, uidb64, token):
-    uid = urlsafe_base64_decode(uidb64).decode()
-    user = User.objects.get(pk=uid)
 
-    if request.method == "POST":
-        password = request.POST['password']
-        user.set_password(password)
-        user.save()
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except:
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+
+        if request.method == "POST":
+            password = request.POST['password']
+            user.set_password(password)
+            user.save()
+
+            messages.success(request, "Password changed successfully")
+            return redirect('app:login')
+
+        return render(request, "reset_password.html")
+
+    else:
+        messages.error(request, "Invalid or expired link")
         return redirect('app:login')
-
-    return render(request, "reset_password.html")
 
 #Live class
 
