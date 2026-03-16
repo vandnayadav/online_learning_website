@@ -127,10 +127,20 @@ def remove_from_cart(request, id):
 # ---------- SIGNUP ----------
 def signup_view(request):
     if request.method == "POST":
-        name = request.POST['name']
-        email = request.POST['email']
-        password = request.POST['password']
-        next_url = request.POST.get('next')
+        name = request.POST.get('name', '').strip()
+        email = request.POST.get('email', '').strip()
+        password = request.POST.get('password', '').strip()
+        confirm_password = request.POST.get('confirm_password', '').strip()
+        contact = request.POST.get('contact', '').strip()
+
+        # Validations
+        if not name or not email or not password:
+            messages.error(request, "All fields are required")
+            return redirect('app:signup')
+
+        if password != confirm_password:
+            messages.error(request, "Passwords do not match")
+            return redirect('app:signup')
 
         if User.objects.filter(username=email).exists():
             messages.error(request, "Email already exists")
@@ -141,13 +151,12 @@ def signup_view(request):
         user.save()
 
         login(request, user)
+        next_url = request.POST.get('next')
         if next_url:
             return redirect(next_url)
         return redirect('app:index')
 
     return render(request, 'signup.html')
-
-
 # ---------- LOGIN ----------
 def login_view(request):
     if request.method == "POST":

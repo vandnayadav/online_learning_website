@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -127,20 +128,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'projectclient26@gmail.com'
-EMAIL_HOST_PASSWORD = 'eagyrfwjznzkzrfp'
-DEFAULT_FROM_EMAIL = 'projectclient26@gmail.com'
-
-import ssl
-EMAIL_SSL_CONTEXT = ssl._create_unverified_context()
-
-EMAIL_SSL_CERTFILE = None
-EMAIL_SSL_KEYFILE = None
-EMAIL_TIMEOUT = 10
-
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'sanjanal.cse.2022@gmail.com'
+EMAIL_HOST_PASSWORD = 'flnidtvejymhllyi'
+DEFAULT_FROM_EMAIL = 'sanjanal.cse.2022@gmail.com'
 
 
 
@@ -149,4 +142,4 @@ YOUTUBE_CHANNEL_ID = "UCON7G9L2CdpJKVJt7DIqTcQ"
 LOGIN_URL = 'app:login'
 LOGIN_REDIRECT_URL = 'app:index'
 
-LOGIN_URL = '/login/'
+

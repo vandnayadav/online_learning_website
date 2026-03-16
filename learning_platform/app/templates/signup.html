@@ -202,6 +202,14 @@
         {% endif %}
         <div class="login-form">
             <h2>Registration Here</h2>
+            {% if messages %}
+    {% for message in messages %}
+        <div style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %}; 
+                    margin-bottom: 10px; text-align: center; font-weight: 600;">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 
             <div class="form-input">
                 <label>Full name</label>
